@@ -1,0 +1,28 @@
+// Code your testbench here
+// or browse Examples
+module farray;
+  int fa1[10]; //Declaring Array
+  string fa2[];
+  bit [3:0]fa3[];
+  
+  initial begin
+    foreach(fa1[i]) //fill array
+      fa1 = i+1;
+      fa2 = '{"Hi","Welcome","to","System Verilog","Tutorial"};
+      fa3 = '{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
+    $display("-----------Fixed Array1-----------"); // displaying array
+    foreach(fa1[i])
+      $display("fa1[%0d] = %0d",i,fa1[i]);
+    $display("-----------Fixed Array2-----------");
+    foreach(fa2[i])
+      $display("fa2[%0d] = %0s",i,fa2[i]);
+    $display("-----------Fixed Array1-----------");
+    foreach(fa3[i])
+      $display("fa3[%0d] = %0b",i,fa3[i]);
+  end
+endmodule
+
+    
+    
+    
+  
