@@ -1,0 +1,22 @@
+module marray;
+  int ma1[3][3];
+  int ma2[2][2][2];
+  int ma3[2:0][3:0];
+  initial begin
+    //foreach(ma1[i])
+      ma1 = '{'{1,2,3},'{4,5,6},'{7,8,9}};
+    //foreach(ma2[i])
+      //ma2 = i+10;
+    //foreach(ma3[i])
+      //ma3 = i+20;
+    $display("--------Display MArray 1---------");
+    foreach(ma1[i,j])
+      $display("ma1[%0d][%0d]=%0d",i,j,ma1[i][j]);
+    //$display("--------Display MArray 2---------");
+    //foreach(ma2[i])
+      //$display("ma2[%0d]=%0d",i,ma2[i]);
+    //$display("--------Display MArray 3---------");
+    //foreach(ma3[i])
+      //$display("ma3[%0d]=%0d",i,ma3[i]);
+  end
+endmodule
