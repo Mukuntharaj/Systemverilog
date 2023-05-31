@@ -1,22 +1,25 @@
 module marray;
   int ma1[3][3];
-  int ma2[2][2][2];
+  int ma2[3][3][3];
   int ma3[2:0][3:0];
   initial begin
     //foreach(ma1[i])
       ma1 = '{'{1,2,3},'{4,5,6},'{7,8,9}};
     //foreach(ma2[i])
-      //ma2 = i+10;
+    ma2 = '{'{'{10,20,30},'{40,50,60},'{11,12,13}},
+            '{'{70,80,90},'{100,110,120},'{14,15,16}},
+            '{'{130,140,150},'{160,170,180},'{17,18,19}}
+           };
     //foreach(ma3[i])
-      //ma3 = i+20;
+    ma3 = '{'{11,22,33,44},'{55,66,77,88},'{99,111,222,333}};
     $display("--------Display MArray 1---------");
     foreach(ma1[i,j])
       $display("ma1[%0d][%0d]=%0d",i,j,ma1[i][j]);
-    //$display("--------Display MArray 2---------");
-    //foreach(ma2[i])
-      //$display("ma2[%0d]=%0d",i,ma2[i]);
-    //$display("--------Display MArray 3---------");
-    //foreach(ma3[i])
-      //$display("ma3[%0d]=%0d",i,ma3[i]);
+    $display("--------Display MArray 2---------");
+    foreach(ma2[i,j,k])
+      $display("ma2[%0d][%0d][%0d]=%0d",i,j,k,ma2[i][j][k]);
+    $display("--------Display MArray 3---------");
+    foreach(ma3[i,j])
+      $display("ma3[%0d][%0d]=%0d",i,j,ma3[i][j]);
   end
 endmodule
