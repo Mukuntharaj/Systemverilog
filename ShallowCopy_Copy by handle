@@ -1,0 +1,78 @@
+// Code your testbench here
+// or browse Examples
+class packet;
+  bit [7:0] addr;
+  
+  function new();
+    addr = 8'h08;
+  endfunction
+  
+  function void display();
+    $display("addr = %0h",addr);
+  endfunction
+  
+  function packet copy();
+    copy = new();
+    //copy.addr=this.addr;
+    return copy;
+  endfunction
+  
+endclass
+
+module copy_method;
+  packet pkt_1;
+  packet pkt_2;
+  packet pkt_3;
+  packet pkt_4;
+  
+  initial begin
+    pkt_1 = new();
+    $display("-----Calling pkt_1 Display------");
+    pkt_1.display();
+    
+    pkt_2= pkt_1;
+    $display("-----Calling pkt_2 Display------"); //copy by handle
+    pkt_2.display();
+    
+    pkt_3= new pkt_2;
+    $display("-----Calling pkt_3 Display------"); //shallow copy
+    pkt_3.display();
+    
+    pkt_4= pkt_3.copy();
+    $display("-----Calling pkt_4 Display------"); //Deep copy
+    pkt_4.display();
+    
+    
+    
+    pkt_1.addr = 8'h10;
+    
+    $display("-----after edit pkt_1 Display------");
+    pkt_1.display();
+    pkt_2.display();
+    pkt_3.display();
+    pkt_4.display();
+    pkt_2.addr = 8'h12;
+   
+    $display("-----after edit pkt_2 Display------");
+    pkt_1.display();
+    pkt_2.display();
+    pkt_3.display();
+    pkt_4.display();
+     pkt_3.addr = 8'h15;
+    
+    $display("-----after edit pkt_3 Display------");
+    pkt_1.display();
+    pkt_2.display();
+    pkt_3.display();
+    pkt_4.display();
+      pkt_3.addr = 8'h13;
+    pkt_4.addr = 8'h11;
+    $display("-----after edit pkt_4 Display------");
+    pkt_1.display();
+    pkt_2.display();
+    pkt_3.display();
+    pkt_4.display();
+    
+  end
+endmodule
+    
